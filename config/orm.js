@@ -1,7 +1,11 @@
-
+// requiring connection file which has server connection settings
 var connection = require('./connection.js');
 
-
+/* object with all the methods that links it to the sql table
+@selectAll to select all the entries in the table
+@insertOne is to insert one entry at a time in the sql table
+@updateOne is to update one entry at a time in the sql table.
+*/
 var orm = {
 	selectAll: function(table, cb) {
 		var queryString = 'SELECT * FROM ' + table + ';';
@@ -19,6 +23,8 @@ var orm = {
 		}));
 	},
 	updateOne: function(table, col, condition, cb){
+
+		// this is to unwimd the col object whose values are coming from conrollers - burgers_controller file.
 		var colArr = [];
 		for(var key in col) {
 			if(col.hasOwnProperty(key)) {
@@ -30,14 +36,6 @@ var orm = {
 		}
 
 		var queryString = 'UPDATE ' + table + ' SET ' + devourString + ' WHERE ' + condition;
-		// var queryString = 'UPDATE ' + table;
-		// queryString += 'SET';
-		// queryString += col.toString();
-		// queryString += 'WHERE';
-		// queryString += condition;
-		console.log('table', table);
-		console.log('col', col);
-		console.log('val', condition);
 
 		console.log(queryString);
 
@@ -49,4 +47,5 @@ var orm = {
 	}
 }
 
+// exporting the orm to burger.js file in models
 module.exports = orm;

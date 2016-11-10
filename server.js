@@ -18,9 +18,11 @@ app.engine('handlebars', exphbs({
 }));
 app.set('view engine', 'handlebars');
 
+// this is coming from controllers folder
 var routes = require('./controllers/burgers_controller.js');
 app.use('/', routes); //this is the route which would be ad a default in front of every route so if we have app.use('/api') so api would be used
 // in front of any other route create. Its a default route
 
-var port = 3000;
+
+var port = process.env.PORT || 3000;
 app.listen(port);

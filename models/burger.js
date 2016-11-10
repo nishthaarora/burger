@@ -1,6 +1,8 @@
-
+// requiring orm file from config folder
 var orm = require('../config/orm.js');
 
+
+// an object which is exported to controller file located in controllers folder which will hold all the sql data
 var burger = {
 
 	selectAll: function(cb) {
