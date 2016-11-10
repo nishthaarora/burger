@@ -3,18 +3,23 @@ var mysql = require('mysql');
 
 var connection;
 
-// creating db connection for deplyong it to heroku. If there is heroku connect to heroku else to localhost
-if (process.env.JAWSDB_URL) {
-	connection = mysql.createConnection(process.env.JAWSDB_URL)
-} else {
-	connection = mysql.createConnection({
-		host: 'localhost',
-		user: 'root',
-		password: 'test',
-		database: 'burgers_db'
-	});
+var newConnection = "mysql://root:test@localhost:3306/burgers_db";
+var dbConnection = process.env.JAWSDB_URL || newConnection;
 
-}
+connection = mysql.createConnection(dbConnection);
+
+// creating db connection for deplyong it to heroku. If there is heroku connect to heroku else to localhost
+// if (process.env.JAWSDB_URL) {
+// 	connection = mysql.createConnection(process.env.JAWSDB_URL)
+// } else {
+// 	connection = mysql.createConnection({
+// 		host: 'localhost',
+// 		user: 'root',
+// 		password: 'test',
+// 		database: 'burgers_db'
+// 	});
+
+// }
 // making initial connection
 
 connection.connect(function(err) {
