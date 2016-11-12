@@ -1,4 +1,4 @@
-** App using Node Express Handlebars**
+**App using Node Express Handlebars**
 
 Overview
 
