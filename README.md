@@ -1,4 +1,4 @@
-**Week of 14 Homework Node Express Handlebars**
+** App using Node Express Handlebars**
 
 Overview
 
