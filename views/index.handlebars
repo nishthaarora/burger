@@ -14,10 +14,11 @@
     {{#unless this.devoured}}
       <li>
 <!--to display all the burgers from the database to the webpage  -->
-        {{this.burger_name}}
+        <!-- {{this.burger_name}} -->
 <!-- to Devour a burger -->
         <form action="burgers/update/{{this.id}}?_method=PUT" method="POST">
           <input type="hidden" name="devoured" value="true">
+           {{this.burger_name}}
           <button id="devour" type="submit">Devour it!</button>
         </form>
       </li>

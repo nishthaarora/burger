@@ -17,10 +17,10 @@ var orm = {
 	insertOne: function(table, col, vals, cb){
 		var queryString ='INSERT INTO ' + table + ' (' + col + ') ' + 'VALUES (' + '?' + ')';
 
-		console.log(connection.query(queryString, vals, function(err, result){
+		connection.query(queryString, vals, function(err, result){
 			if(err)throw err;
 			cb(err, result);
-		}));
+		});
 	},
 	updateOne: function(table, col, condition, cb){
 
@@ -32,16 +32,12 @@ var orm = {
 			}
 
 			var devourString = colArr.toString();
-			console.log(devourString);
 		}
 
 		var queryString = 'UPDATE ' + table + ' SET ' + devourString + ' WHERE ' + condition;
 
-		console.log(queryString);
-
 		connection.query(queryString, condition ,function(err, result){
 			if(err)throw err;
-			console.log('result', result);
 			cb(err, result);
 		});
 	}
